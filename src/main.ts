@@ -931,7 +931,7 @@ export default class ImageConvertPLugin extends Plugin {
 			}
 			if (newLinkText.startsWith('![[')) {
 				// This is an internal link
-				newLinkText = newLinkText.replace(']]', `|${size}]]`);
+				newLinkText = newLinkText.replace(']]', `|${size}]]  \n`);
 			}
 			// else if (newLinkText.startsWith('![')) {
 			//   // This is an external link
@@ -959,7 +959,6 @@ export default class ImageConvertPLugin extends Plugin {
 		const regex = new RegExp(findText, 'g');
 		const newContent = docContent.replace(regex, replaceText);
 		editor.setValue(newContent);
-		editor.setCursor({ line: currentLine, ch: 0 });
 		// Ensure the current line is in a visible position
 		editor.scrollIntoView({ from: { line: currentLine, ch: 0 }, to: { line: currentLine, ch: 0 } });
 
